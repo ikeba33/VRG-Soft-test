@@ -1,0 +1,99 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="indent" >
+        <item name="android:paddingRight">@dimen/Horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/Horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/Vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/Vertical_padding</item>
+        <item name="android:layout_marginTop">@dimen/Margin</item>
+        <item name="android:layout_marginBottom">@dimen/Margin</item>
+        <item name="android:layout_marginLeft">@dimen/Margin_side</item>
+        <item name="android:layout_marginRight">@dimen/Margin_side</item>
+    </style>
+
+
+
+    <style name="style_txtV" parent="indent">
+        <item name="android:background">@color/color_tv</item>
+        <item name="android:textSize">@dimen/txt_size_tv</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/min_height_tv</item>
+        <item name="android:maxHeight">@dimen/max_height_tv</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/min_Width_tv</item>
+        <item name="android:maxWidth">@dimen/max_Width_tv</item>
+        <item name="android:paddingRight">@dimen/Horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/Horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/Vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/Vertical_padding</item>
+
+
+    </style>
+
+
+    <style name="style_txtV_for_item">
+        <item name="android:background">@color/color_tv</item>
+        <item name="android:textSize">@dimen/txt_size_tv</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/min_height_tv</item>
+        <item name="android:maxHeight">@dimen/max_height_tv</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/min_Width_tv</item>
+        <item name="android:maxWidth">@dimen/max_Width_tv</item>
+        <item name="android:paddingRight">@dimen/Horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/Horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/Vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/Vertical_padding</item>
+        <item name="android:layout_marginTop">@dimen/margin_for_item</item>
+        <item name="android:layout_marginBottom">@dimen/margin_for_item</item>
+    </style>
+
+    <style name="style_btn" parent="indent"  >
+
+        <item name="android:background">@color/color_btn</item>
+        <item name="android:textSize">@dimen/txt_size_tv</item>
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/min_height_tv</item>
+        <item name="android:maxHeight">@dimen/max_height_tv</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/min_Width_tv</item>
+        <item name="android:maxWidth">@dimen/max_Width_tv</item>
+        <item name="android:layout_margin">@dimen/Margin</item>
+
+    </style>
+    
+    <style name="style_imgV_v" parent="indent">
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/min_v_height_imgV</item>
+        <item name="android:maxHeight">@dimen/max_v_height_imgV</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/min_v_Width_imgV</item>
+        <item name="android:maxWidth">@dimen/max_v_Width_imgV</item>
+        <item name="android:layout_margin">@dimen/Margin</item>
+    </style>
+
+    <style name="style_imgV_h" parent="indent">
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/min_v_height_imgV</item>
+        <item name="android:maxHeight">@dimen/max_v_height_imgV</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/min_v_Width_imgV</item>
+        <item name="android:maxWidth">@dimen/max_v_Width_imgV</item>
+        <item name="android:layout_margin">@dimen/Margin</item>
+
+    </style>
+
+</resources>

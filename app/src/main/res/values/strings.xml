@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RetrofitTest1</string>
+    <string name="author">author:</string>
+    <string name="time_of_created">time of created:</string>
+    <string name="comment_prefix">sum of\n
+        comments:</string>
+</resources>

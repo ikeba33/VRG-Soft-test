@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="txt_size_tv">25sp</dimen>
+    <dimen name="txt_small_size_tv">15sp</dimen>
+    <dimen name="txt_size_btn">35sp</dimen>
+
+    <dimen name="min_height_tv">40dp</dimen>
+    <dimen name="max_height_tv">80dp</dimen>
+    <dimen name="min_Width_tv">120dp</dimen>
+    <dimen name="max_Width_tv">360dp</dimen>
+    <dimen name="Horizontal_padding">6dp</dimen>
+    <dimen name="Vertical_padding">3dp</dimen>
+    <dimen name="Margin">11dp</dimen>
+    <dimen name="Margin_side">7dp</dimen>
+
+
+    <dimen name="min_v_height_imgV">100dp</dimen>
+    <dimen name="max_v_height_imgV">150dp</dimen>
+    <dimen name="min_v_Width_imgV">85dp</dimen>
+    <dimen name="max_v_Width_imgV">125dp</dimen>
+
+    <dimen name="one_Item_height_port">500</dimen>
+    <dimen name="margin_for_item">5</dimen>
+
+
+</resources>
