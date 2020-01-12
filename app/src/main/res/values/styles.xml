@@ -85,7 +85,7 @@
     </style>
 
     <style name="style_imgV_h" parent="indent">
-        <item name="android:scaleType">centerInside</item>
+        <item name="android:scaleType">centerCrop</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">@dimen/min_v_height_imgV</item>
         <item name="android:maxHeight">@dimen/max_v_height_imgV</item>

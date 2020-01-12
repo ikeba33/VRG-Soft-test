@@ -34,7 +34,7 @@
         android:id="@+id/publish_img"
         style="@style/style_imgV_h"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_weight="1"
 
         />

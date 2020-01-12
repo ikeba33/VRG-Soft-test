@@ -48,7 +48,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
     public void onBindViewHolder(@NonNull DataAdapter.VH holder, int position) {
         Publish publish = publishes.get(position);
         if (!publish.getThumbnail().equals("")){
-
+            ImageManager.fetchImage(publishes.get(position).getThumbnail(),holder.thumbnailImgV);
+            holder.thumbnailImgV.setVisibility(View.VISIBLE);
             //начала качаем картинку
             // Стринг юрл = лодер.гетГалериЮрл(юрл дл скачивания)
             // holder.thumbnailImgV.(publish.getThumbnail();//тут добавляем картинку по юрл и делаем видимім вью

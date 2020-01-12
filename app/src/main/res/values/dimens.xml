@@ -19,8 +19,8 @@
     <dimen name="min_v_Width_imgV">85dp</dimen>
     <dimen name="max_v_Width_imgV">125dp</dimen>
 
-    <dimen name="one_Item_height_port">500</dimen>
-    <dimen name="margin_for_item">5</dimen>
+    <dimen name="one_Item_height_port">500dp</dimen>
+    <dimen name="margin_for_item">5dp</dimen>
 
 
 </resources>
