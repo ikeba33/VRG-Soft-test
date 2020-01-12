@@ -1,6 +1,8 @@
 package com.example.retrofittest1;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -21,6 +25,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
 
     public DataAdapter(Context context) {
         this.context = context;
+
+
     }
 
 
@@ -67,12 +73,25 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
         final TextView num_commentsTxtV;
 
         public VH(@NonNull View itemView) {
+
             super(itemView);
             thumbnailImgV = itemView.findViewById(R.id.publish_img);
             authorTxtV = itemView.findViewById(R.id.publish_author);
             createdTxtV = itemView.findViewById(R.id.publish_created);
             num_commentsTxtV = itemView.findViewById(R.id.publish_num_comments);
+            thumbnailImgV.setImageResource(R.drawable.ic_launcher_background);
+
+            thumbnailImgV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ImageView v = (ImageView) view;
+                   // v.text
+
+                }
+            });
 
         }
+
+
     }
 }

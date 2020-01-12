@@ -4,4 +4,5 @@
     <string name="time_of_created">time of created:</string>
     <string name="comment_prefix">sum of\n
         comments:</string>
+    <string name="string_add">add</string>
 </resources>

@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface Api {
 
-    @GET("/r/TellMeAFact/top/.json?count=5")
+    @GET("/top.json?limit=2")
     Call<FirstDate> getPublish();
 
 
