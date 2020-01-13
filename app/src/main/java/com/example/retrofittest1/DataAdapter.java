@@ -1,8 +1,7 @@
 package com.example.retrofittest1;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,11 +16,11 @@ import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
 
-    private Context context;
+    private MainActivity context;
     private List<Publish> publishes = new ArrayList<>();
 
 
-    public DataAdapter(Context context) {
+    public DataAdapter(MainActivity context) {
         this.context = context;
 
 
@@ -47,9 +44,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.VH holder, int position) {
         Publish publish = publishes.get(position);
-        if (!publish.getThumbnail().equals("")){
-            ImageManager.fetchImage(publishes.get(position).getThumbnail(),holder.thumbnailImgV);
-            holder.thumbnailImgV.setVisibility(View.VISIBLE);
+        if (!publish.getThumbnail().equals("")) {
+            ImageManager.fetchImage(publishes.get(position).getThumbnail(), holder.thumbnailImgV);
+//            holder.thumbnailImgV.setVisibility(View.VISIBLE);
+//            holder.thumbnailImgV.setOnClickListener(this);
+
             //начала качаем картинку
             // Стринг юрл = лодер.гетГалериЮрл(юрл дл скачивания)
             // holder.thumbnailImgV.(publish.getThumbnail();//тут добавляем картинку по юрл и делаем видимім вью
@@ -65,6 +64,22 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
     public int getItemCount() {
         return publishes.size();
     }
+
+//    @Override
+//    public void onClick(View view) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//
+//        ImageView full_screen;
+//        Button btn_save;
+//        ImageButton btn_close;
+//
+//        switch (View v) {
+//
+//
+//        builder.setView(fullImg);
+//        AlertDialog alert = builder.create();
+//        alert.show();
+//    }
 
 
     class VH extends RecyclerView.ViewHolder {
@@ -85,14 +100,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
             thumbnailImgV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ImageView v = (ImageView) view;
-                   // v.text
+                    ImageView img = (ImageView) view;
+                    FullScreenDialog fullScreenDialog = new FullScreenDialog(((BitmapDrawable) img.getDrawable()).getBitmap());
+
+                    fullScreenDialog.show(context.getSupportFragmentManager(),"ss");
 
                 }
             });
-
         }
-
-
     }
 }

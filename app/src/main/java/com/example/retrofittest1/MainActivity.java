@@ -1,6 +1,7 @@
 package com.example.retrofittest1;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private static final String LIST_DATA_KEY = "answers";
-    private static final int MY_PERMISSIONS_REQUEST_CODE = 22;
+    public static final int MY_PERMISSIONS_REQUEST_CODE = 22;
 
     Gson gson = new GsonBuilder()
             .setLenient()
@@ -128,32 +129,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    public void saveInGalery(){//todo
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-               // saveImage();
-                // Здесь отображаете диалог с объяснением -- зачем
-                // Вашему приложению требуется данное разрешение.
-                // По кнопке "Ок" диалога запрашиваете разрешение.
-
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_CODE);
-
-            }
-        }
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+                    Toast.makeText(this, "gooooooo saved ",
+                            Toast.LENGTH_SHORT).show();
                     //saveImage();
 
                 } else {
-
+                    Toast.makeText(this, "sooooooo baddddd ",
+                            Toast.LENGTH_SHORT).show();
                     // Пользователь запретил доступ
                 }
                 return;
@@ -161,26 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void saveImage(Bitmap bmp) {
-        // Пользователь разрешил доступ
-        // Сохраняете картинку на диск
-        try {
-            File dest = new File(Environment.getExternalStorageDirectory() + "/"+"TikTakToe");
-            dest.mkdirs();
-            dest = new File(Environment.getExternalStorageDirectory() + "/"+"newFoto"+".jpg");
-            FileOutputStream out = new FileOutputStream(dest);
 
-            bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-            Toast.makeText(this, "Сохранил "+dest.getPath().toString(),
-                    Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, "Ошибка при сохранении. Повторите попытку.",
-                    Toast.LENGTH_SHORT).show();
-            Log.d("MyIlnarLog2", e.toString());
-        }
-    }
 
 }
 

@@ -2,17 +2,22 @@ package com.example.retrofittest1;
 
 
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class ImageManager {
@@ -80,5 +85,26 @@ public class ImageManager {
                 conn.disconnect();
         }
         return bitmap;
+    }
+
+    public static void saveImage(Bitmap bmp, Context context) {
+        // Пользователь разрешил доступ
+        // Сохраняете картинку на диск
+        try {
+            File dest = new File(Environment.getExternalStorageDirectory() + "/"+"myApp");
+            dest.mkdirs();
+            dest = new File(Environment.getExternalStorageDirectory() + "/"+"newFoto"+".jpg");//todo name
+            FileOutputStream out = new FileOutputStream(dest);
+
+            bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+            Toast.makeText(context, "image saved "+dest.getPath().toString(),
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Ошибка при сохранении. Повторите попытку.",
+                    Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

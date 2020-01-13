@@ -58,6 +58,11 @@
         <item name="android:layout_marginBottom">@dimen/margin_for_item</item>
     </style>
 
+    <style name="myFullscreenAlertDialogStyle" parent="Theme.AppCompat.Light.NoActionBar">      //no actionbar, but status bar exists
+        <item name="android:windowFullscreen">true</item>                       //remove status bar
+        <item name="colorAccent">@color/colorAccent</item>                      //change button text color
+    </style>
+
     <style name="style_btn" parent="indent"  >
 
         <item name="android:background">@color/color_btn</item>
