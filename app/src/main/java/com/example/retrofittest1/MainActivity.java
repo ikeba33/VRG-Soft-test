@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String LIST_DATA_KEY = "answers";
     public static final int MY_PERMISSIONS_REQUEST_CODE = 22;
 
+
     Gson gson = new GsonBuilder()
             .setLenient()
             .create();
@@ -47,8 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_q;
     private DBHelper dbHelper;
 
-
     private Api api;
+
+    private int publishSum;
+    private static final int COUNT_NEW_PUBLIDH =2;
 
 
     @Override
@@ -112,8 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
 
-
-        api.getPublish().enqueue(new Callback<FirstDate>() {
+        api.getPublish(publishSum, publishSum + COUNT_NEW_PUBLIDH).enqueue(new Callback<FirstDate>() {
             @Override
             public void onResponse(Call<FirstDate> call, Response<FirstDate> response) {
                 FirstDate f = response.body();
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //todo clear old data
                 dbHelper.insert(list);
-
+                publishSum+=COUNT_NEW_PUBLIDH;
 
             }
 

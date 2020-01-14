@@ -94,7 +94,7 @@ public class ImageManager {
 
     public static void saveImage(Bitmap bmp, Context context) {
 
-        int number = 0;
+        long imageName = System.currentTimeMillis()/1000;
 
 
         // Пользователь разрешил доступ
@@ -102,8 +102,7 @@ public class ImageManager {
         try {
             File dest = new File(Environment.getExternalStorageDirectory() + "/"+"myApp");
             dest.mkdirs();
-            dest = new File(Environment.getExternalStorageDirectory() + "/"+ Integer.toString(number) +".jpg");//todo name
-            number++;
+            dest = new File(Environment.getExternalStorageDirectory() + "/"+ imageName +".jpg");//todo name
             FileOutputStream out = new FileOutputStream(dest);
             bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
