@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +24,13 @@ import com.example.retrofittest1.MainActivity;
 import com.example.retrofittest1.R;
 
 public class FullScreenDialog extends DialogFragment implements View.OnClickListener {
-    private Bitmap thumbnailImgV;
+    private String url;
     ImageView full_screen;//null
     Button btn_save;
     ImageButton btn_close;
 
-    public FullScreenDialog(Bitmap thumbnailImgV) {
-        this.thumbnailImgV = thumbnailImgV;
+    public FullScreenDialog(String url) {
+        this.url = url;
     }
 
 
@@ -54,7 +55,9 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
         btn_close = v.findViewById(R.id.btn_close);
         btn_save = v.findViewById(R.id.btn_save);
 
-        full_screen.setImageBitmap(thumbnailImgV);
+       // full_screen.setImageBitmap(thumbnailImgV);
+
+        ImageManager.fetchImage(url,full_screen);
 
         btn_close.setOnClickListener(this);
         btn_save.setOnClickListener(this);
@@ -76,7 +79,7 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
                         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MainActivity.MY_PERMISSIONS_REQUEST_CODE);
                     }
                 }
-                ImageManager.saveImage(thumbnailImgV, getContext());
+                ImageManager.saveImage(((BitmapDrawable) full_screen.getDrawable()).getBitmap(), getContext());
 
         }
     }

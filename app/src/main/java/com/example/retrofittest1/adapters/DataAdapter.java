@@ -4,6 +4,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import com.example.retrofittest1.model.Publish;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
+public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH>  {
 
     private MainActivity context;
     private List<Publish> publishes = new ArrayList<>();
@@ -88,7 +89,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
 //    }
 
 
-    class VH extends RecyclerView.ViewHolder {
+    class VH extends RecyclerView.ViewHolder{
         final ImageView thumbnailImgV;
         final TextView authorTxtV;
         final TextView createdTxtV;
@@ -106,11 +107,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
             thumbnailImgV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String url="";
                     ImageView img = (ImageView) view;
-                    FullScreenDialog fullScreenDialog = new FullScreenDialog(((BitmapDrawable) img.getDrawable()).getBitmap());
+                    FullScreenDialog fullScreenDialog = new FullScreenDialog(publishes.get(getAdapterPosition()).getUrl());
 
                     fullScreenDialog.show(context.getSupportFragmentManager(),"ss");
-
                 }
             });
         }
