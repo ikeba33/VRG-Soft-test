@@ -7,6 +7,7 @@ class Publish {
     private int num_comments;
     private String thumbnail;
 
+
     public Publish(String author, long created, int num_comments, String thumbnail) {
         this.author = author;
         this.created = created;
@@ -14,17 +15,21 @@ class Publish {
         this.thumbnail = thumbnail;
     }
 
+
     public String getAuthor() {
         return author;
     }
+
 
     public long getCreated() {
         return created;
     }
 
+
     public int getNum_comments() {
         return num_comments;
     }
+
 
     public String getThumbnail() {
         return thumbnail;

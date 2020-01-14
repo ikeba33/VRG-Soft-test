@@ -50,12 +50,12 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(dataBase);
     }
 
-    public void insert(List<Publish> leaf) {
+    public void insert(List<Publish> publishes) {
 
 
         ContentValues contentValues = new ContentValues();
 
-        for (Publish p : leaf) {
+        for (Publish p : publishes) {
 
 
             contentValues.put(DBHelper.KEY_AUTHOR, p.getAuthor());

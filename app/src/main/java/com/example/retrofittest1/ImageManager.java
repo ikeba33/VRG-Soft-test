@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,6 +19,8 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class ImageManager {
@@ -88,14 +91,18 @@ public class ImageManager {
     }
 
     public static void saveImage(Bitmap bmp, Context context) {
+
+        int number = 0;
+
+
         // Пользователь разрешил доступ
         // Сохраняете картинку на диск
         try {
             File dest = new File(Environment.getExternalStorageDirectory() + "/"+"myApp");
             dest.mkdirs();
-            dest = new File(Environment.getExternalStorageDirectory() + "/"+"newFoto"+".jpg");//todo name
+            dest = new File(Environment.getExternalStorageDirectory() + "/"+ Integer.toString(number) +".jpg");//todo name
+            number++;
             FileOutputStream out = new FileOutputStream(dest);
-
             bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();

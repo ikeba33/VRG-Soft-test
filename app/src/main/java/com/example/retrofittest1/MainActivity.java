@@ -1,12 +1,7 @@
 package com.example.retrofittest1;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,16 +9,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setLenient()
                 .create();
 
+        dbHelper = new DBHelper(this);
+
+        //todo bd
+        if(dbHelper.read()!= null){
+            adapter.setPublishes(dbHelper.read());
+
+        }
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.reddit.com")
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_q.setOnClickListener(this);
 
-        dbHelper = new DBHelper(this);
+
     }
 
 
@@ -113,12 +112,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirstDate f = response.body();
                 list = new ArrayList<>();
 
-                for (PublichData date : f.data.children) {
+                for (PublishData date : f.data.children) {
                     list.add(date.data);
                 }
 
                 adapter.setPublishes(list);
-                dbHelper.read();
+
+                //todo clear old data
+                dbHelper.insert(list);
+
 
             }
 

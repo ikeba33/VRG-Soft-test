@@ -1,6 +1,5 @@
 package com.example.retrofittest1;
 
-import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +54,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH> {
         }
 
         holder.authorTxtV.setText(publish.getAuthor());
-        holder.createdTxtV.setText(Rab.millsToDate(publish.getCreated()));
+        holder.createdTxtV.setText(TimeManager.millsToDate(publish.getCreated()));
         holder.num_commentsTxtV.setText(String.valueOf(publish.getNum_comments()));
     }
 

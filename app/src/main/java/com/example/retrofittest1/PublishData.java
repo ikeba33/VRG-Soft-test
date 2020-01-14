@@ -1,5 +1,5 @@
 package com.example.retrofittest1;
 
-class PublichData {
+class PublishData {
     Publish data;
 }

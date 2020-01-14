@@ -37,7 +37,7 @@
         android:id="@+id/publish_img"
         style="@style/style_imgV_h"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="@dimen/imgVw_height"
         android:visibility="invisible"
 
         app:layout_constraintLeft_toLeftOf="parent"

@@ -21,6 +21,7 @@
 
     <dimen name="one_Item_height_port">500dp</dimen>
     <dimen name="margin_for_item">5dp</dimen>
+    <dimen name="imgVw_height">500dp</dimen>
 
 
 </resources>

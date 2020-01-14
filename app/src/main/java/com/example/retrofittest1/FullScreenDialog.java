@@ -41,6 +41,7 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
         }
     }
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
