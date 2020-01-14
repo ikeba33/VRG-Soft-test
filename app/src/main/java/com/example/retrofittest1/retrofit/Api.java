@@ -1,6 +1,6 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.retrofit;
 
-import java.util.List;
+import com.example.retrofittest1.model.FirstDate;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

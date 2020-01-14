@@ -1,4 +1,4 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.managers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

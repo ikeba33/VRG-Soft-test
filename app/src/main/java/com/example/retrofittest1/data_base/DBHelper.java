@@ -1,4 +1,4 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.data_base;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,14 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import com.example.retrofittest1.model.Publish;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -87,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         cursor.getInt(Num_commentsIndex),cursor.getString(pictureIndex));
                 list.add(publish);
                 Log.d("mLog",
-                        ", autorname = " + cursor.getString(authorIndex));
+                        ", authorname = " + cursor.getString(authorIndex));
 
             } while (cursor.moveToNext());
         }

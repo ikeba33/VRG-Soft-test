@@ -1,4 +1,4 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.managers;
 
 
 import java.io.BufferedInputStream;
@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.retrofittest1.R;
 
 
 public class ImageManager {

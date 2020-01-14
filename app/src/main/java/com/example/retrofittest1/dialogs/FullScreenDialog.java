@@ -1,4 +1,4 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.dialogs;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -17,6 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.retrofittest1.managers.ImageManager;
+import com.example.retrofittest1.MainActivity;
+import com.example.retrofittest1.R;
 
 public class FullScreenDialog extends DialogFragment implements View.OnClickListener {
     private Bitmap thumbnailImgV;

@@ -11,6 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.retrofittest1.adapters.DataAdapter;
+import com.example.retrofittest1.data_base.DBHelper;
+import com.example.retrofittest1.managers.ImageManager;
+import com.example.retrofittest1.model.FirstDate;
+import com.example.retrofittest1.model.Publish;
+import com.example.retrofittest1.model.PublishData;
+import com.example.retrofittest1.retrofit.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImageView view = findViewById(R.id.outTv);
-        ImageManager.fetchImage("https://www.redditstatic.com/xray-snoo-head.png", view);
+        ImageManager.fetchImage("https://www.redditstatic.com/xray-snoo-head.png", view);//todo убрать от сюда)
 
         Gson gson = new GsonBuilder()
                 .setLenient()

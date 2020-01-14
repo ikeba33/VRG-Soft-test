@@ -1,6 +1,6 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.model;
 // финальная вложенность, внутри чилдрена
-class Publish {
+public class  Publish {
 
     private String author;
     private long created;

@@ -1,4 +1,4 @@
-package com.example.retrofittest1;
+package com.example.retrofittest1.adapters;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
@@ -9,6 +9,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.retrofittest1.dialogs.FullScreenDialog;
+import com.example.retrofittest1.managers.ImageManager;
+import com.example.retrofittest1.MainActivity;
+import com.example.retrofittest1.R;
+import com.example.retrofittest1.managers.TimeManager;
+import com.example.retrofittest1.model.Publish;
 
 import java.util.ArrayList;
 import java.util.List;
