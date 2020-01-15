@@ -3,7 +3,6 @@ package com.example.retrofittest1.dialogs;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,7 +24,7 @@ import com.example.retrofittest1.R;
 
 public class FullScreenDialog extends DialogFragment implements View.OnClickListener {
     private String url;
-    ImageView full_screen;//null
+    ImageView full_screen;
     Button btn_save;
     ImageButton btn_close;
 
@@ -55,8 +54,6 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
         btn_close = v.findViewById(R.id.btn_close);
         btn_save = v.findViewById(R.id.btn_save);
 
-       // full_screen.setImageBitmap(thumbnailImgV);
-
         ImageManager.fetchImage(url,full_screen);
 
         btn_close.setOnClickListener(this);
@@ -79,8 +76,8 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
                         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MainActivity.MY_PERMISSIONS_REQUEST_CODE);
                     }
                 }
-                ImageManager.saveImage(((BitmapDrawable) full_screen.getDrawable()).getBitmap(), getContext());
 
+                ImageManager.saveImage(((BitmapDrawable) full_screen.getDrawable()).getBitmap(), getContext());
         }
     }
 }

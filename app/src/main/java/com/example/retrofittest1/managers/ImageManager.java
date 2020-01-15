@@ -29,8 +29,8 @@ public class ImageManager {
 
     private final static String TAG = "ImageManager";
 
-    /** Private constructor prevents instantiation from other classes */
     private ImageManager () {}
+
 
     public static void fetchImage(final String iUrl, final ImageView iView) {
         if ( iUrl == null || iView == null )
@@ -59,6 +59,7 @@ public class ImageManager {
         thread.setPriority(3);
         thread.start();
     }
+
 
     public static Bitmap downloadImage(String iUrl) {
         Bitmap bitmap = null;
@@ -91,6 +92,7 @@ public class ImageManager {
         }
         return bitmap;
     }
+
 
     public static void saveImage(Bitmap bmp, Context context) {
 

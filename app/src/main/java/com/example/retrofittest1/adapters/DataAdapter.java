@@ -53,12 +53,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH>  {
         Publish publish = publishes.get(position);
         if (!publish.getThumbnail().equals("")) {
             ImageManager.fetchImage(publishes.get(position).getThumbnail(), holder.thumbnailImgV);
-//            holder.thumbnailImgV.setVisibility(View.VISIBLE);
-//            holder.thumbnailImgV.setOnClickListener(this);
 
-            //начала качаем картинку
-            // Стринг юрл = лодер.гетГалериЮрл(юрл дл скачивания)
-            // holder.thumbnailImgV.(publish.getThumbnail();//тут добавляем картинку по юрл и делаем видимім вью
+        }else{
+            holder.thumbnailImgV.setVisibility(View.INVISIBLE);
         }
 
         holder.authorTxtV.setText(publish.getAuthor());
@@ -72,21 +69,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.VH>  {
         return publishes.size();
     }
 
-//    @Override
-//    public void onClick(View view) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//
-//        ImageView full_screen;
-//        Button btn_save;
-//        ImageButton btn_close;
-//
-//        switch (View v) {
-//
-//
-//        builder.setView(fullImg);
-//        AlertDialog alert = builder.create();
-//        alert.show();
-//    }
 
 
     class VH extends RecyclerView.ViewHolder{

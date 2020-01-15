@@ -1,6 +1,9 @@
 package com.example.retrofittest1;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import com.example.retrofittest1.managers.ImageManager;
 import com.example.retrofittest1.model.FirstDate;
 import com.example.retrofittest1.model.Publish;
 import com.example.retrofittest1.model.PublishData;
+import com.example.retrofittest1.receiver.MyReceiver;
 import com.example.retrofittest1.retrofit.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Api api;
 
     private int publishSum;
-    private static final int COUNT_NEW_PUBLIDH =2;
+    private static final int COUNT_NEW_PUBLISH = 2;
+    private BroadcastReceiver receiver;
 
 
     @Override
@@ -61,14 +66,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView view = findViewById(R.id.outTv);
         ImageManager.fetchImage("https://www.redditstatic.com/xray-snoo-head.png", view);//todo убрать от сюда)
 
+        receiver = new MyReceiver();
+
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
         dbHelper = new DBHelper(this);
 
-        //todo bd
-        if(dbHelper.read()!= null){
+
+        if (dbHelper.read() != null) {
             adapter.setPublishes(dbHelper.read());
 
         }
@@ -98,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_q.setOnClickListener(this);
 
-
     }
 
 
@@ -106,38 +112,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         String data = gson.toJson(list);
 
-
         outState.putString(LIST_DATA_KEY, data);
         super.onSaveInstanceState(outState);
     }
 
+
     @Override
     public void onClick(View view) {
 
+        registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
-        api.getPublish(publishSum, publishSum + COUNT_NEW_PUBLIDH).enqueue(new Callback<FirstDate>() {
-            @Override
-            public void onResponse(Call<FirstDate> call, Response<FirstDate> response) {
-                FirstDate f = response.body();
-                list = new ArrayList<>();
+        if (true) {//todo ?
+            api.getPublish(publishSum, publishSum + COUNT_NEW_PUBLISH).enqueue(new Callback<FirstDate>() {
+                @Override
+                public void onResponse(Call<FirstDate> call, Response<FirstDate> response) {
+                    FirstDate f = response.body();
+                    list = new ArrayList<>();
 
-                for (PublishData date : f.data.children) {
-                    list.add(date.data);
+                    for (PublishData date : f.data.children) {
+                        list.add(date.data);
+                    }
+
+                    adapter.setPublishes(list);
+
+                    //todo clear old data
+                    dbHelper.insert(list);
+                    publishSum += COUNT_NEW_PUBLISH;
+
                 }
 
-                adapter.setPublishes(list);
 
-                //todo clear old data
-                dbHelper.insert(list);
-                publishSum+=COUNT_NEW_PUBLIDH;
-
-            }
-
-            @Override
-            public void onFailure(Call<FirstDate> call, Throwable t) {
-                String s = t.getMessage();
-            }
-        });
+                @Override
+                public void onFailure(Call<FirstDate> call, Throwable t) {
+                    String s = t.getMessage();
+                }
+            });
+        }
     }
 
 
@@ -146,10 +156,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "gooooooo saved ",
+                    Toast.makeText(this, "go saved ",
                             Toast.LENGTH_SHORT).show();
-                    //saveImage();
-
                 } else {
                     Toast.makeText(this, "sooooooo baddddd ",
                             Toast.LENGTH_SHORT).show();
@@ -161,6 +169,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
+    }
 }
+
+
 

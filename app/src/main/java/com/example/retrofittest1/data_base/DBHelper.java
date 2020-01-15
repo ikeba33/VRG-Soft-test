@@ -30,6 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase dataBase) {
 
@@ -40,6 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase dataBase, int oldVersion, int newVersion) {
         dataBase.execSQL("drop table if exists " + TABLE_PUBLICATION);
@@ -47,8 +49,8 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(dataBase);
     }
 
-    public void insert(List<Publish> publishes) {
 
+    public void insert(List<Publish> publishes) {
 
         ContentValues contentValues = new ContentValues();
 
@@ -61,12 +63,10 @@ public class DBHelper extends SQLiteOpenHelper {
             contentValues.put(KEY_THUMBNAIL, p.getThumbnail());//хранится url закачки из инета, а не в телефоне
             contentValues.put(KEY_BIGPICTUREINDEX, p.getUrl());
 
-
             getWritableDatabase().insert(DBHelper.TABLE_PUBLICATION, null, contentValues);
         }
-
-
     }
+
 
     public List<Publish> read() {
 
@@ -92,7 +92,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-
 
        return list;
     }
